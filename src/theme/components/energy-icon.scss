@@ -1,0 +1,50 @@
+.energy-icon {
+  width: $energy-icon-size;
+  height: $energy-icon-size;
+  display: inline-block;
+  border-radius: 50%;
+  background: url('/assets/images/energy-icons.png');
+  background-size: 342.6px 35px;
+  border: 2px solid $main-white;
+  margin-right: 5px;
+
+  &.Dragon {
+    background-position: -3px $icons-y-offset;
+  }
+
+  &.Darkness {
+    background-position: -37px $icons-y-offset;
+  }
+
+  &.Fighting {
+    background-position: -72px $icons-y-offset;
+  }
+
+  &.Lightning {
+    background-position: -106px $icons-y-offset;
+  }
+
+  &.Fire {
+    background-position: -141px $icons-y-offset;
+  }
+
+  &.Grass {
+    background-position: -175px $icons-y-offset;
+  }
+
+  &.Water {
+    background-position: -210px $icons-y-offset;
+  }
+
+  &.Psychic {
+    background-position: -245px $icons-y-offset;
+  }
+
+  &.Colorless {
+    background-position: -279px $icons-y-offset;
+  }
+
+  &.Metal {
+    background-position: -314px $icons-y-offset;
+  }
+}
