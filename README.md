@@ -1,4 +1,6 @@
-# PokemonTcgCompendium
+# Pokemon TCG - Compendium
+## Intro
+Pokemon TCG - Compendium was designed as a simple and easy way to search the [Pokemon TCG API](https://docs.pokemontcg.io/) and organise decks and collections, please note this project is a work in progress.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
 
