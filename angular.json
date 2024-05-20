@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pokemon-tcg-compendium:build:production"
+              "buildTarget": "pokemon-tcg-compendium:build:production"
             },
             "development": {
-              "browserTarget": "pokemon-tcg-compendium:build:development"
+              "buildTarget": "pokemon-tcg-compendium:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pokemon-tcg-compendium:build"
+            "buildTarget": "pokemon-tcg-compendium:build"
           }
         },
         "test": {
