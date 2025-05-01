@@ -1,11 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { CardService } from '../../services/card.service';
 
 import { CardPreviewComponent } from './card-preview.component';
-
-import { EnergyCostPipe } from '../../pipes/energy-cost.pipe';
 
 describe('CardPreviewComponent', () => {
   let component: CardPreviewComponent;
@@ -14,9 +13,9 @@ describe('CardPreviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule ],
-      declarations: [ CardPreviewComponent, EnergyCostPipe ]
-    })
+    imports: [CardPreviewComponent],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(CardPreviewComponent);

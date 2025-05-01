@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'energyCost'
+  name: 'energyCost',
+  standalone: true
 })
 export class EnergyCostPipe implements PipeTransform {
 

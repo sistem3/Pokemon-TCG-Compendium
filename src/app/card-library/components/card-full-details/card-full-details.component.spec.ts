@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { CardFullDetailsComponent } from './card-full-details.component';
-
-import { EnergyCostPipe } from '../../pipes/energy-cost.pipe';
 
 describe('CardFullDetailsComponent', () => {
   let component: CardFullDetailsComponent;
@@ -11,9 +10,9 @@ describe('CardFullDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule ],
-      declarations: [ CardFullDetailsComponent, EnergyCostPipe ]
-    })
+    imports: [CardFullDetailsComponent],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(CardFullDetailsComponent);

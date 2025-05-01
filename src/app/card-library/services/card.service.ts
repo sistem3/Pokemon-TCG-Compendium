@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 // Interfaces
 import { Card } from '../interfaces/card.interface';
@@ -11,11 +10,13 @@ import { Card } from '../interfaces/card.interface';
 })
 export class CardService {
 
+  baseUrl: string = 'https://api.pokemontcg.io/v2/';
+
   constructor(private http: HttpClient) { }
 
   getCards(queryConfig: any): Observable<any> {
     const queryParams = new HttpParams({fromObject: queryConfig}).toString();
-    return this.http.get(environment.ptcgAPIBaseURL + 'cards?' + queryParams, {observe: 'response'});
+    return this.http.get(this.baseUrl + 'cards?' + queryParams, {observe: 'response'});
   }
 
   getBlankCard(): Card {
