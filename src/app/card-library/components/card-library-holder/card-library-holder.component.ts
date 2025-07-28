@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { NgFor, NgIf } from '@angular/common';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
@@ -18,10 +17,7 @@ import { QueryConfigService } from '../../services/query-config.service';
 
 @Component({
   selector: 'app-card-library-holder',
-  standalone: true,
   imports: [
-    NgFor,
-    NgIf,
     FormsModule,
     InputTextModule,
     DialogModule,
