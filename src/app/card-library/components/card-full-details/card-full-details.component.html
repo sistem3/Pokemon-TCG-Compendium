@@ -1,99 +1,137 @@
-<section *ngIf="cardDetails" class="grid">
-  <article class="col-8">
-    <h1 class="text-2xl">{{cardDetails.name}}</h1>
-    <p *ngIf="cardDetails.hp"><strong>HP:</strong> {{cardDetails.hp}}</p>
-    <p *ngIf="cardDetails.level"><strong>Level:</strong> {{cardDetails.level}}</p>
-    <p *ngIf="cardDetails.evolvesFrom"><strong>Evolves From:</strong> {{cardDetails.evolvesFrom}}</p>
-    <p *ngIf="cardDetails.evolvesTo"><strong>Evolves To:</strong> {{cardDetails.evolvesTo}}</p>
-    <p *ngIf="cardDetails.ancientTrait">
-      <strong>Ancient Trait:</strong><br />
-      {{cardDetails.ancientTrait.name}}<br />
-      {{cardDetails.ancientTrait.text}}
-    </p>
-    <hr />
-    <section *ngIf="cardDetails.abilities">
-      <article *ngFor="let ability of cardDetails.abilities">
-        <h2 class="text-xl">{{ability.name}}</h2>
-        <p *ngIf="ability.type"><strong>Type:</strong>&nbsp;{{ability.type}}</p>
-        <p><small>{{ability.text}}</small></p>
-      </article>
-      <hr />
-    </section>
-    <section *ngIf="cardDetails.attacks">
-      <article *ngFor="let attack of cardDetails.attacks; let i = index;">
-        <h2 class="text-xl">{{attack.name}}</h2>
-        <p><small>{{attack.text}}</small></p>
-        <p *ngIf="attack.damage"><strong>Damage:</strong> {{attack.damage}}</p>
+@if (cardDetails) {
+  <section class="grid">
+    <article class="col-8">
+      <h1 class="text-2xl">{{cardDetails.name}}</h1>
+      @if (cardDetails.hp) { <p><strong>HP:</strong> {{cardDetails.hp}}</p> }
+      @if (cardDetails.level) { <p><strong>Level:</strong> {{cardDetails.level}}</p> }
+      @if (cardDetails.evolvesFrom) { <p><strong>Evolves From:</strong> {{cardDetails.evolvesFrom}}</p> }
+      @if (cardDetails.evolvesTo) { <p><strong>Evolves To:</strong> {{cardDetails.evolvesTo}}</p> }
+      @if (cardDetails.ancientTrait) {
         <p>
-          <strong class="cost-label">Cost:</strong>&nbsp;
-          <span [innerHTML]="attack.cost | energyCost"></span>
+          <strong>Ancient Trait:</strong><br />
+          {{cardDetails.ancientTrait.name}}<br />
+          {{cardDetails.ancientTrait.text}}
         </p>
-        <hr *ngIf="i !== (cardDetails.attacks.length - 1)" />
-      </article>
-    </section>
-    <hr />
-    <p *ngIf="cardDetails.flavorText"><small>{{cardDetails.flavorText}}</small></p>
-  </article>
-  <article class="col-4">
-    <span *ngIf="cardDetails.images.large" class="card-preview">
-      <img
-        [src]="cardDetails.images.large"
-        [alt]="cardDetails.name"
-        [title]="cardDetails.name" />
-    </span>
-    <div *ngIf="!cardDetails.images.large" class="card-placeholder">
-      <span>Missing Card Image</span>
-      <img
-        src="https://upload.wikimedia.org/wikipedia/en/3/3b/Pokemon_Trading_Card_Game_cardback.jpg"
-        alt="Pokemon TCG Blank Card" />
-    </div>
-  </article>
-  <article class="col-6">
-    <p *ngIf="cardDetails.weaknesses">
-      <strong class="cost-label">Weaknesses:&nbsp;</strong>
-      <span *ngFor="let weakness of cardDetails.weaknesses">
-        <span class="energy-icon {{weakness.type}}" title="{{weakness.type}}"></span>
-        <span class="cost-label">{{weakness.value}}</span>
-      </span>
-    </p>
-    <p *ngIf="cardDetails.resistances">
-      <strong class="cost-label">Resistances:&nbsp;</strong>
-      <span *ngFor="let resistance of cardDetails.resistances">
-        <span class="energy-icon {{resistance.type}}" title="{{resistance.type}}"></span>
-        <span class="cost-label">{{resistance.value}}</span>
-      </span>
-    </p>
-  </article>
-  <article class="col-6">
-    <p *ngIf="cardDetails.types">
-      <strong class="cost-label">Types:&nbsp;</strong>
-      <span *ngFor="let type of cardDetails.types">
-        <span class="energy-icon {{type}}" title="{{type}}"></span>
-      </span>
-    </p>
-    <p *ngIf="cardDetails.retreatCost">
-      <strong class="cost-label">Retreat Cost:&nbsp;</strong>
-      <span *ngFor="let retreatCost of cardDetails.retreatCost">
-        <span class="energy-icon {{retreatCost}}" title="{{retreatCost}}"></span>
-      </span>
-    </p>
-    <p *ngIf="cardDetails.subtypes">
-      <strong>Sub Types:</strong>
-      <span *ngFor="let subType of cardDetails.subtypes; let i = index;">
-        {{subType}}<span *ngIf="i !== (cardDetails.subtypes.length - 1)">,&nbsp;</span>
-      </span>
-    </p>
-  </article>
-  <article class="col-6">
-    <p><strong>Artist:</strong> {{cardDetails.artist}}</p>
-    <p *ngIf="cardDetails.set">
-      <strong>Set:</strong><br />
-      <span>Name = {{cardDetails.set.name}}<br /></span>
-      <span>Series = {{cardDetails.set.series}}<br /></span>
-    </p>
-  </article>
-  <article class="col-6">
-    <p><strong>Card Number:</strong> {{cardDetails.number}}</p>
-    <p><strong>Rarity:</strong> {{cardDetails.rarity}}</p>
-  </article>
-</section>
+      }
+      <hr />
+      @if (cardDetails.abilities) {
+        <section>
+          @for (ability of cardDetails.abilities; track ability) {
+            <article>
+              <h2 class="text-xl">{{ability.name}}</h2>
+              @if (ability.type) { <p><strong>Type:</strong>&nbsp;{{ability.type}}</p> }
+              <p><small>{{ability.text}}</small></p>
+            </article>
+          }
+          <hr />
+        </section>
+      }
+      @if (cardDetails.attacks) {
+        <section>
+          @for (attack of cardDetails.attacks; track attack; let i = $index) {
+            <article>
+              <h2 class="text-xl">{{attack.name}}</h2>
+              <p><small>{{attack.text}}</small></p>
+              @if (attack.damage) { <p><strong>Damage:</strong> {{attack.damage}}</p> }
+              <p>
+                <strong class="cost-label">Cost:</strong>&nbsp;
+                <span [innerHTML]="attack.cost | energyCost"></span>
+              </p>
+              @if (i !== (cardDetails.attacks.length - 1)) { <hr /> }
+            </article>
+          }
+        </section>
+      }
+      <hr />
+      @if (cardDetails.flavorText) { <p><small>{{cardDetails.flavorText}}</small></p> }
+    </article>
+    <article class="col-4">
+      @if (cardDetails.images.large) {
+        <span class="card-preview">
+          <img
+            [src]="cardDetails.images.large"
+            [alt]="cardDetails.name"
+            [title]="cardDetails.name" />
+        </span>
+      }
+      @if (!cardDetails.images.large) {
+        <div class="card-placeholder">
+          <span>Missing Card Image</span>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/3/3b/Pokemon_Trading_Card_Game_cardback.jpg"
+            alt="Pokemon TCG Blank Card" />
+        </div>
+      }
+    </article>
+    <article class="col-6">
+      @if (cardDetails.weaknesses) {
+        <p>
+          <strong class="cost-label">Weaknesses:&nbsp;</strong>
+          @for (weakness of cardDetails.weaknesses; track weakness) {
+            <span>
+              <span class="energy-icon {{weakness.type}}" title="{{weakness.type}}"></span>
+              <span class="cost-label">{{weakness.value}}</span>
+            </span>
+          }
+        </p>
+      }
+      @if (cardDetails.resistances) {
+        <p>
+          <strong class="cost-label">Resistances:&nbsp;</strong>
+          @for (resistance of cardDetails.resistances; track resistance) {
+            <span>
+              <span class="energy-icon {{resistance.type}}" title="{{resistance.type}}"></span>
+              <span class="cost-label">{{resistance.value}}</span>
+            </span>
+          }
+        </p>
+      }
+    </article>
+    <article class="col-6">
+      @if (cardDetails.types) {
+        <p>
+          <strong class="cost-label">Types:&nbsp;</strong>
+          @for (type of cardDetails.types; track type) {
+            <span>
+              <span class="energy-icon {{type}}" title="{{type}}"></span>
+            </span>
+          }
+        </p>
+      }
+      @if (cardDetails.retreatCost) {
+        <p>
+          <strong class="cost-label">Retreat Cost:&nbsp;</strong>
+          @for (retreatCost of cardDetails.retreatCost; track retreatCost) {
+            <span>
+              <span class="energy-icon {{retreatCost}}" title="{{retreatCost}}"></span>
+            </span>
+          }
+        </p>
+      }
+      @if (cardDetails.subtypes) {
+        <p>
+          <strong>Sub Types:</strong>
+          @for (subType of cardDetails.subtypes; track subType; let i = $index) {
+            <span>
+              {{subType}} @if (i !== (cardDetails.subtypes.length - 1)) { <span>,&nbsp;</span> }
+            </span>
+          }
+        </p>
+      }
+    </article>
+    <article class="col-6">
+      <p><strong>Artist:</strong> {{cardDetails.artist}}</p>
+      @if (cardDetails.set) {
+        <p>
+          <strong>Set:</strong><br />
+          <span>Name = {{cardDetails.set.name}}<br /></span>
+          <span>Series = {{cardDetails.set.series}}<br /></span>
+        </p>
+      }
+    </article>
+    <article class="col-6">
+      <p><strong>Card Number:</strong> {{cardDetails.number}}</p>
+      <p><strong>Rarity:</strong> {{cardDetails.rarity}}</p>
+    </article>
+  </section>
+}
