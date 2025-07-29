@@ -19,7 +19,7 @@
         <ng-template #header pTemplate="header">
           <div class="flex flex-column md:flex-row main-header">
             <!-- Logo Starts -->
-            <span class="mb-2 md:mb-0 mr-1 logo-holder">
+            <span class="mb-2 md:mb-0 logo-holder">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg"
                 [alt]="mainTitle"
@@ -33,7 +33,8 @@
                 type="search"
                 [(ngModel)]="searchTerm"
                 pInputText
-                placeholder="Search by Name"
+                placeholder="Search by name"
+                name="Search by name"
                 (input)="searchCards()">
             </span>
             <!-- Search Ends -->
