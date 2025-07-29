@@ -51,11 +51,3 @@
   }
 }
 
-.product-grid-item-content {
-  position: relative;
-  overflow: hidden;
-}
-
-.p-dataview .p-dataview-content {
-  padding: 0;
-}
