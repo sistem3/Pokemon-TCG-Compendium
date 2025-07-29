@@ -24,7 +24,8 @@ import { QueryConfigService } from '../../services/query-config.service';
     DataView,
     CardPreviewComponent,
     CardFullDetailsComponent],
-  templateUrl: './card-library-holder.component.html'
+  templateUrl: './card-library-holder.component.html',
+  styleUrl: './card-library-holder.component.css'
 })
 export class CardLibraryHolderComponent implements OnInit {
 

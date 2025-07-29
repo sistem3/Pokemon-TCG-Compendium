@@ -8,7 +8,8 @@ import { CardService } from '../../services/card.service';
 @Component({
   selector: 'app-card-preview',
   imports: [EnergyCostPipe],
-  templateUrl: './card-preview.component.html'
+  templateUrl: './card-preview.component.html',
+  styleUrl: './card-preview.component.css'
 })
 export class CardPreviewComponent {
 
