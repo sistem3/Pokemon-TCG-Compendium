@@ -1,0 +1,22 @@
+:root {
+  --main-black: #000;
+  --main-blackrgb: 0, 0, 0;
+  --main-white: #FFF;
+  --main-whitergb: 255, 255, 255;
+  --light-grey: #dee2e6;
+  --main-logo-width: 50px;
+  --theme-background: #1e1e1e;
+  --theme-backgroundrgb: 30, 30, 30;
+  /* Cards */
+  --card-background: #3d3d3d;
+  --card-backgroundrgb: 61, 61, 61;
+  --card-width: 225px;
+  --card-height: 312px;
+  --card-border-radius: 12px;
+  --card-details-font-size: 12px;
+  --card-details-line-height: 16px;
+  --card-details-power-toughness-font-size: 18px;
+  /* Energy Icons */
+  --energy-icon-size: 30px;
+  --icons-y-offset: -4px;
+}

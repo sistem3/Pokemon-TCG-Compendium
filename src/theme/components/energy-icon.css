@@ -1,0 +1,50 @@
+.energy-icon {
+  width: var(--energy-icon-size);
+  height: var(--energy-icon-size);
+  display: inline-block;
+  border-radius: 50%;
+  background: url('/images/energy-icons.png');
+  background-size: 342.6px 35px;
+  border: 2px solid var(--main-white);
+  margin-right: 5px;
+
+  &.Dragon {
+    background-position: -3px var(--icons-y-offset);
+  }
+
+  &.Darkness {
+    background-position: -37px var(--icons-y-offset);
+  }
+
+  &.Fighting {
+    background-position: -72px var(--icons-y-offset);
+  }
+
+  &.Lightning {
+    background-position: -106px var(--icons-y-offset);
+  }
+
+  &.Fire {
+    background-position: -141px var(--icons-y-offset);
+  }
+
+  &.Grass {
+    background-position: -175px var(--icons-y-offset);
+  }
+
+  &.Water {
+    background-position: -210px var(--icons-y-offset);
+  }
+
+  &.Psychic {
+    background-position: -245px var(--icons-y-offset);
+  }
+
+  &.Colorless {
+    background-position: -279px var(--icons-y-offset);
+  }
+
+  &.Metal {
+    background-position: -314px var(--icons-y-offset);
+  }
+}
